@@ -6,6 +6,10 @@
   height: 40vmin;
   pointer-events: none;
 }
+.navbar-toggler-icon{
+  color:blue;
+  background-color: black;
+}
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
