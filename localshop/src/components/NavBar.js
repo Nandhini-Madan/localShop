@@ -1,40 +1,31 @@
 import React from "react";
+import { Nav ,Navbar,Container} from "react-bootstrap";
+import { Route } from "react-router-dom";
+import { Link } from "react-router-dom";
+import LocalShopRoutes from "../Routes/LocalShopRoutes";
+import Login from "./Login";
+import Signup from "./SignUp";
+
 const NavBar = () => {
-    return (
-        <>
-            <nav class="navbar navbar-expand-lg bg-light">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">Navbar</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Features</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Pricing</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown link
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
-        </li>
-      </ul>
+  return (
+    <div className="container-fluid mt-3">
+      <Navbar bg="primary" variant="dark">
+        
+          <Navbar.Brand href="#home" className=" pt-1">    Local Shop</Navbar.Brand>
+          <Nav className="me-auto">
+          <Nav.Link as={Link} to="/">Home</Nav.Link>
+              <Nav.Link as={Link} to="/login">Login</Nav.Link>
+              <Nav.Link as={Link} to="/signup">Signup</Nav.Link>
+              <Nav.Link as={Link} to="/about">About</Nav.Link>
+              <Nav.Link as={Link} to="/service">Service & Pricing</Nav.Link>
+              <Nav.Link as={Link} to="/contact">Contact</Nav.Link>
+
+          </Nav>
+       
+      </Navbar>
+     <LocalShopRoutes/>
     </div>
-  </div>
-</nav>
-        </>
-    )
+  )
 }
 
 export default NavBar;

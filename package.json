@@ -1,5 +1,60 @@
 {
+  "name": "localshop",
+  "version": "1.0.0",
+  "description": "",
+  "main": "knexfile.js",
   "dependencies": {
-    "react-router-dom": "^6.3.0"
-  }
+    "colorette": "^2.0.16",
+    "commander": "^9.3.0",
+    "cors": "^2.8.5",
+    "debug": "^4.3.4",
+    "dotenv": "^16.0.1",
+    "escalade": "^3.1.1",
+    "esm": "^3.2.25",
+    "express": "^4.18.1",
+    "function-bind": "^1.1.1",
+    "get-package-type": "^0.1.0",
+    "getopts": "^2.3.0",
+    "has": "^1.0.3",
+    "helmet": "^5.1.0",
+    "interpret": "^2.2.0",
+    "is-core-module": "^2.9.0",
+    "knex": "^2.1.0",
+    "lodash": "^4.17.21",
+    "morgan": "^1.10.0",
+    "ms": "^2.1.2",
+    "node": "^18.4.0",
+    "node-bin-setup": "^1.1.0",
+    "object-assign": "^4.1.1",
+    "path-parse": "^1.0.7",
+    "pg-connection-string": "^2.5.0",
+    "rechoir": "^0.8.0",
+    "resolve": "^1.22.1",
+    "resolve-from": "^5.0.0",
+    "supports-preserve-symlinks-flag": "^1.0.0",
+    "tarn": "^3.0.2",
+    "tildify": "^2.0.0",
+    "vary": "^1.1.2"
+  },
+  "devDependencies": {
+    "eslint": "^8.19.0",
+    "eslint-plugin-react": "^7.30.1",
+    "nodemon": "^2.0.18"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node  index.js",
+    "server": "nodemon  index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nandhini-Madan/localShop.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Nandhini-Madan/localShop/issues"
+  },
+  "homepage": "https://github.com/Nandhini-Madan/localShop#readme"
 }
