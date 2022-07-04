@@ -31,6 +31,12 @@ exports.up = async function (knex) {
                 .notNullable();
             //  .unique()
             //  .index('email');
+            tbl.integer('roleId')
+            .notNullable()
+            .references('roles.id')
+            .inTable('roles')
+            .onDelete('RESTRICT')
+            .onUpdate('UPDATE')
             tbl.timestamp('created_at').defaultTo(knex.fn.now())
         })
         console.log("Sucessfully created 'user table")
