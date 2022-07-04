@@ -19,6 +19,7 @@
     "helmet": "^5.1.0",
     "interpret": "^2.2.0",
     "is-core-module": "^2.9.0",
+    "jest": "^28.1.2",
     "knex": "^2.1.0",
     "lodash": "^4.17.21",
     "morgan": "^1.10.0",
@@ -27,6 +28,7 @@
     "node-bin-setup": "^1.1.0",
     "object-assign": "^4.1.1",
     "path-parse": "^1.0.7",
+    "pg": "^8.7.3",
     "pg-connection-string": "^2.5.0",
     "rechoir": "^0.8.0",
     "resolve": "^1.22.1",
@@ -37,9 +39,11 @@
     "vary": "^1.1.2"
   },
   "devDependencies": {
+    "cross-env": "^7.0.3",
     "eslint": "^8.19.0",
     "eslint-plugin-react": "^7.30.1",
-    "nodemon": "^2.0.18"
+    "nodemon": "^2.0.18",
+    "supertest": "^6.2.4"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
