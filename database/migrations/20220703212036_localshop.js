@@ -8,12 +8,12 @@ exports.up = async function (knex) {
     try {
         await knex.schema.createTable('roles', tbl => {
             tbl.increments('id');
-            tbl.string('roleName')
+            tbl.string('roleName').notNullable()
         })
         console.log("Successfully created the 'roles' table")
     }
     catch (err) {
-        consol.log("Failed to create 'roles' table", err)
+        console.log("Failed to create 'roles' table");
     }
     finally {
         if (knex) {
@@ -21,6 +21,7 @@ exports.up = async function (knex) {
         }
     }
     try {
+        console.log("user")
         await knex.schema.createTable('users', tbl => {
             tbl.increments('userId');
             tbl.string('name', 255)
@@ -32,11 +33,12 @@ exports.up = async function (knex) {
             //  .unique()
             //  .index('email');
             tbl.integer('roleId')
-            .notNullable()
+            .unsigned()
+          
             .references('roles.id')
-            .inTable('roles')
+           // .inTable('roles')
             .onDelete('RESTRICT')
-            .onUpdate('UPDATE')
+            .onUpdate('CASCADE')
             tbl.timestamp('created_at').defaultTo(knex.fn.now())
         })
         console.log("Sucessfully created 'user table")
@@ -74,15 +76,15 @@ exports.up = async function (knex) {
         await knex.schema.createTable('myCart', tbl => {
             tbl.increments("cartId");
             tbl.integer('customerId')
-                .notNullable()
-                .references('users.id')
-                .inTable('users')
+               // .notNullable()
+                .references('users.userId')
+               // .inTable('users')
                 .onDelete("RESTRICT")
                 .onUpdate('CASCADE');
             tbl.integer('ProductId')
-                .notNullable()
+               // .notNullable()
                 .references('products.productId')
-                .inTable('products')
+               // .inTable('products')
                 .onDelete("RESTRICT")
                 .onUpdate('CASCADE')
             tbl.timestamp('created_at').defaultTo(knex.fn.now())
@@ -105,15 +107,15 @@ exports.up = async function (knex) {
         await knex.schema.createTable('bill', tbl => {
             tbl.increments('billId');
             tbl.integer('saleId')
-                .notNullable()
+               // .notNullable()
                 .references('products.productId')
-                .inTable('products')
+              //  .inTable('products')
                 .onDelete('RESTRICT')
                 .onUpdate('CASCADE');
                 tbl.integer('customerId')
-                .notNullable()
+              //  .notNullable()
                 .references('users.userId')
-                .inTable('users')
+              //  .inTable('users')
                 .onDelete('RESTRICT')
                 .onUpdate('CASCADE');
             tbl.string('productName')
@@ -137,9 +139,9 @@ exports.up = async function (knex) {
         await knex.schema.createTable('billAddress',tbl=>{
             tbl.increments('billAddId');
             tbl.integer('billsId')
-            .notNullable()
+          //  .notNullable()
             .references('bill.billId')
-            .inTable('bill')
+           // .inTable('bill')
             .onDelete('RESTRICT')
             .onUpdate('CASCADE')
             tbl.string('Address')
@@ -170,8 +172,9 @@ exports.up = async function (knex) {
  * @returns { Promise<void> }
  */
 exports.down = async function (knex) {
-    await knex.schema.dropTableIfExists('billAddress')
-    await knex.schema.dropTableIfExists('bill')
+   await knex.schema.dropTableIfExists('billAddress')
+   await knex.schema.dropTableIfExists('bill')
+   await knex.schema.dropTableIfExists('myCart')
     await knex.schema.dropTableIfExists('products')
     await knex.schema.dropSchemaIfExists('users')
     await knex.schema.dropSchemaIfExists('roles')

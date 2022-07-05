@@ -4,6 +4,7 @@
   "description": "",
   "main": "knexfile.js",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "colorette": "^2.0.16",
     "commander": "^9.3.0",
     "cors": "^2.8.5",
@@ -20,6 +21,7 @@
     "interpret": "^2.2.0",
     "is-core-module": "^2.9.0",
     "jest": "^28.1.2",
+    "jsonwebtoken": "^8.5.1",
     "knex": "^2.1.0",
     "lodash": "^4.17.21",
     "morgan": "^1.10.0",

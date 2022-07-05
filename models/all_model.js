@@ -1,9 +1,10 @@
 const db = require("../config/dbconfig");
 
 async function add(user) {
+    console.log(user, "user db")
     try {
-        const [id] = await db("users").insert(user, "id")
-        return getByUserId(id);
+        const [userId] = await db("users").insert(user, "userId")
+        return getByUserId(userId);
     }
     catch (err) {
         console.log("add user", err)
@@ -11,13 +12,15 @@ async function add(user) {
     }
 }
 
-async function getByUserId(id) {
+async function getByUserId(userId) {
+    console.log("getByuserid", userId)
+   // const id = parseInt(userId)
     try {
         return db("users")
-            .join('roles','users.roleId','roles.id')
-            .where({ id })
+            .join('roles', 'users.roleId', 'roles.id')
+            .where(userId)
             .first()
-            .select("users.id",
+            .select("users.userId",
                 "users.name",
                 "users.email",
                 "users.password",
@@ -29,10 +32,44 @@ async function getByUserId(id) {
         throw err;
     }
 }
-
+//getByEmail
+async function getByEmail(email) {
+    try{
+        const userId=await db('users')
+        .select("users.userId")
+        .where({email})
+        .first()
+        console.log(userId)
+        return getByUserId(userId)
+       
+    }
+    catch (err){        
+        console.log("getByUserId", err)
+        throw err;
+    }
+    
+}
+async function getProducts(){
+    try{
+        console.log("getProduct try");
+    const products= db('products')
+                    .select('products.productId',
+                    'products.productName',
+                    'products.productDescription',
+                    'products.price')
+    return products
+       
+    }
+    catch{(err)=>{
+        console.log('getProduct err',err)
+        throw err;
+    }}
+}
 
 
 module.exports = {
     add,
-    getByUserId
+    getByUserId,
+    getByEmail,
+    getProducts
 }
