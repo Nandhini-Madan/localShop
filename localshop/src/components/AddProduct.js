@@ -4,19 +4,19 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Form, Button } from "react-bootstrap";
 import InputForm from "./InputForm";
+import { axiosWithAuth } from "../utils/axiosWithAuth";
 
 const SignUp = () => {
     const navigate=useNavigate();
     const defaultState = {
-        name: "",
-        email: "",
-        password: "",
-        roleId:2      
+      productName:"",
+      description:"",
+      price:0.0 
     }
     const formSchema=yup.object().shape({
-        name:yup.string().required("Please enter your name").min(2, "This is not your name"),
-        password:yup.string().required("Enter your password").min(4,"password must contain atleast 4 characters"),
-        email:yup.string().email().required("Enter your email")
+        name:yup.string().required("Please enter Product Name").min(2, "This is not your product name"),
+        description:yup.string().required("Please enter Product description").min(2, "This is not your product description"),
+       price:yup.decimal().notrequired()
       //  terms:yup.boolean().oneOf([true],'Please accept our terms')
 
     })
@@ -42,9 +42,7 @@ const SignUp = () => {
                 }                
             )
             console.log(formState,"prev");
-           
-        
-  
+ 
     yup.reach(formSchema,event.target.name)
     .validate(event.target.value)
     .then(
@@ -63,18 +61,12 @@ const SignUp = () => {
     const submitForm=(event)=>{
         console.log("clicked")
         event.preventDefault();
-        console.table(formState.roleId)
-        axios.post("http://localhost:5000/user/register",formState)
+        console.table(formState)
+        axiosWithAuth().post("http://localhost:5000/admin/product",formState)
             .then(res=>{
-                console.log(res.data.data.roleId);
-                if(res.status===201 && res.data.data.roleId==2){
-                    console.log("Successfully registered")
-                    navigate("/products")
-                }
-                else{
+               if(res.status==201){              
                     navigate("/AdminPage");
                 }
-
             })
             .catch(err=>{
                 console.log("invalid register",err)
@@ -83,11 +75,11 @@ const SignUp = () => {
     }
     return (
         <div className="container">
-            <div className="mt-3">Welcome to Signup page</div>
+            <div className="mt-3">Welcome to Add product page</div>
             <Form onSubmit={submitForm}>
-                <InputForm type="text" placeholder="Name" onChange={inputchange} value={formState.name} name="name" label="Name:*" errors={error} />
-                <InputForm type="password" placeholder="password" onChange={inputchange} value={formState.password} name="password" label="Password:*" errors={error} />
-                <InputForm type="email" placeholder="Email" onChange={inputchange} value={formState.email} name="email" label="Email:*" errors={error} />
+                <InputForm type="text" placeholder="Name" onChange={inputchange} value={formState.name} name="productName" label="productName" errors={error} />
+                <InputForm type="password" placeholder="password" onChange={inputchange} value={formState.description} name="productDescription" label="productDescription" errors={error} />
+                <InputForm type="email" placeholder="Email" onChange={inputchange} value={formState.price} name="price" label="price" errors={error} />
                 
                 <Button disabled={disableButton} variant="primary" type="submit" >
                     Submit

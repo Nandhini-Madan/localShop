@@ -1,5 +1,5 @@
 const jwt = require("jsonwebtoken"); 
-let constant = require('../configjw/constants');
+let constant = require('../utils/constants');
 
 module.exports = {
     handleError,
@@ -12,14 +12,13 @@ function handleError(err, res) {
 }
 
 function isValid(user) {
-    return Boolean(user.username && user.password && typeof user.password === "string");
+    return Boolean(user.email && user.password && typeof user.password === "string");
   }
 
   function makeJwt(user) {
     const payload = {
-        subject: user.id,
-        first_name: user.first_name,
-        username: user.username,
+        userId: user.userId,
+        name: user.name,
         role: user.role,
     };
 

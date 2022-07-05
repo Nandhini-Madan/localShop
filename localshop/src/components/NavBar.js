@@ -1,10 +1,8 @@
 import React from "react";
-import { Nav ,Navbar,Container} from "react-bootstrap";
-import { Route } from "react-router-dom";
+import { Nav ,Navbar} from "react-bootstrap";
 import { Link } from "react-router-dom";
 import LocalShopRoutes from "../Routes/LocalShopRoutes";
-import Login from "./Login";
-import Signup from "./SignUp";
+
 
 const NavBar = () => {
   return (
@@ -19,9 +17,7 @@ const NavBar = () => {
               <Nav.Link as={Link} to="/about">About</Nav.Link>
               <Nav.Link as={Link} to="/service">Service & Pricing</Nav.Link>
               <Nav.Link as={Link} to="/contact">Contact</Nav.Link>
-
-          </Nav>
-       
+          </Nav>       
       </Navbar>
      <LocalShopRoutes/>
     </div>

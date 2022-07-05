@@ -7,21 +7,18 @@ router.get("/",(req,res)=>{
     res.status(200).json({message:"welcome message"})
 
 })
-
-
 router.post("/register",(req,res)=>{
     const credentials=req.body;
-    console.log("Register")
+    console.log("Register",req.body)
     if(isValid(credentials)){
-        const rounds=process.env.REACT_APP_BYCRYPT_ROUNDS||8;
+        console.log(credentials)
+        const rounds=8;
         const hash = bcryptjs.hashSync(credentials.password, rounds);
-        credentials.password = hash;
-    
-    
+        credentials.password = hash;   
         db.add(credentials)
           .then(user => {
             console.log("return data",user)
-            res.status(201).json({ data: user, message: "Welcome customer" });
+            res.status(201).json({ data: user, message: "Welcome customer",user });
           })
           .catch(error => {
             console.log(error)
@@ -35,27 +32,26 @@ router.post("/register",(req,res)=>{
 })
 
 router.post('/login', (req, res) => {
-    const { username, password } = req.body;
+    const { email, password } = req.body;
     console.log("req.body",req.body)
     if (isValid(req.body)) {
-     
-      db.getBy({ username })
-     
-        .then(([user]) => {
+     console.log("valid")
+      db.getByEmail(email )    
+        .then((user) => {
           console.log("Inside login",user)
           if (user && bcryptjs.compareSync(password, user.password)) {
             const token = makeJwt(user);
-            res.status(200).json({ message: 'logged in', token, role: user.role });
+            res.status(200).json({ message: 'logged in', token, role: user.roleName });
           }
           else{
-            res.status(401).json({message:"Error username"})
+            res.status(401).json({message:"Error email"})
           }
         })
         .catch(err => {
           res.status(500).json({ message: 'Error loggin in', error: err.message });
         });
     } else {
-      res.status(404).json({ error: 'please provide username and password' });
+      res.status(404).json({ error: 'please provide email and password' });
     }
   });
 
