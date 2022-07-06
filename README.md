@@ -16,6 +16,12 @@ Local Shop is a website where you can find handmade, vintage, and custom gifts f
 5. Craft enthusiasts.
 6. People who are looking for gifts for special occasions e.g., Fathers Day, Mothers Day, etc.
 
+# Login
+
+| Email         | password      |
+| ------------- | ------------- |
+| a@bc.com      | 12345         |
+
 
 #contributor
 Nandhini Madan
