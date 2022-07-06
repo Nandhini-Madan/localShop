@@ -20,7 +20,7 @@ Local Shop is a website where you can find handmade, vintage, and custom gifts f
 
 | Email         | password      |
 | ------------- | ------------- |
-| a@bc.com      | 12345         |
+| ab@bc.com      | 12345         |
 
 
 #contributor
