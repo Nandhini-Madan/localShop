@@ -11,6 +11,17 @@ async function add(user) {
         throw err;
     }
 }
+async function addProduct(productDetails) {
+    console.log(productDetails, "user db")
+    try {
+        const [productId] = await db("products").insert(productDetails, "productId")
+        return getByProductId(productId);
+    }
+    catch (err) {
+        console.log("add product", err)
+        throw err;
+    }
+}
 
 async function getByUserId(userId) {
     console.log("getByuserid", userId)
@@ -32,6 +43,24 @@ async function getByUserId(userId) {
         throw err;
     }
 }
+async function getByProductId(productId) {
+    console.log("getByProductId hj", productId)
+   // const id = parseInt(ProductId)
+    try {
+        return db("products")
+           // .join('roles', 'users.roleId', 'roles.id')
+            .select("products.productName",
+            "products.productDescription",
+            "products.price")
+            .where({productId})
+            //.first()
+        
+    }
+    catch (err) {
+        console.log("getByProductId", err.message)
+        throw err;
+    }
+}
 //getByEmail
 async function getByEmail(email) {
     try{
@@ -48,6 +77,28 @@ async function getByEmail(email) {
         throw err;
     }
     
+}
+async function removeProductById(productId){
+    try{
+        return db('products')
+        .where('productId', productId)
+        .del();
+    }
+    catch(err){
+        console.log("removeproductById", err)
+        throw err;
+    }
+}
+async function updateproductDetails(productId,changes){
+    try{
+        return db('products')
+        .where('productId',productId)
+        .update(changes)
+    }
+  catch(err){
+    console.log("update product err", err.message)
+    throw err;
+  }
 }
 async function getProducts(){
     try{
@@ -69,7 +120,11 @@ async function getProducts(){
 
 module.exports = {
     add,
+    addProduct,
     getByUserId,
     getByEmail,
-    getProducts
+    getProducts,
+    getByProductId,
+    removeProductById,
+   updateproductDetails
 }
