@@ -40,10 +40,12 @@ const loginSubmit=(e)=>{
         localStorage.setItem('token',res.data.token);
       //  props.setLoggedIn(res.data.token);
       console.log("cust",res.data.role)
-        if(res.data.roleName=="Customer"){
+        if(res.data.role=="Customer"){
          //   navigate("/products")
+         navigate("/adminPage")
         }
         else{
+            //currently navigating to admin page
             navigate("/adminPage")
         }
     })
