@@ -13,11 +13,11 @@ const Input = (props) => {
                 <Form.Label>{props.label}</Form.Label>
                 <Form.Control type={props.type} placeholder={props.message} defaultValue={props.value} onChange={props.onChange} name={props.name} />
                 {
-                   <Form.Text className="danger" variant="danger">{errorMessage} </Form.Text>
+                   <Form.Text className="error" variant="danger">{errorMessage} </Form.Text>
                 }
             </Form.Group>
         </>
     )
 }
 
-export default Input;
+export default React.memo(Input);
