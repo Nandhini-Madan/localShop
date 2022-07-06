@@ -12,7 +12,7 @@ const AdminPage = () => {
         axiosWithAuth().get("http://localhost:5000/admin/products")
             .then(res => {
                 console.log(res,"getProduct");
-                setProducts(res.data.products)
+                setProducts(res.data.data)
             })
             .catch(err => {
                 console.log("Error displaying", err.message);
@@ -21,7 +21,8 @@ const AdminPage = () => {
     }
     const deleteProduct = (id) => {
         const productId = id;
-        axiosWithAuth().delete('http://localhost:5000/admin/product/:id', productId)
+        console.log(productId,"del1")
+        axiosWithAuth().delete(`http://localhost:5000/admin/product/${productId}` )
             .then(res => {
                 if (res.status == 200) {
                 getProducts();
@@ -31,12 +32,18 @@ const AdminPage = () => {
                 }
             })
             .catch((err)=>{
-                console.log("Error")
+                console.log("Error",err.message)
             })
     }
     const editProduct=(id)=>{
         const productId=id;
+        console.log(productId,"editProduct")
+
         navigate('/editPage',{state:{productId:productId}})
+
+    }
+    const addProduct=()=>{
+        navigate("/addProduct");
 
     }
     useEffect(() => {
@@ -51,19 +58,18 @@ const AdminPage = () => {
                         <Card>
                             <Card.Img variant="top" src={fitness} />
                             <Card.Body>
-                                <Card.Title>Name:{products.name}</Card.Title>
-                                <Card.Text>Type:{products.description}</Card.Text>
-                                <Card.Text>Intensity:{products.price}</Card.Text>
-
-
+                                <Card.Title>Name:{products.productName}</Card.Title>
+                                <Card.Text>Description:{products.productDescription}</Card.Text>
+                                <Card.Text>price:{products.price}</Card.Text>
                                 <Button variant="primary" className="danger" onClick={deleteProduct.bind(this, products.productId)}> Delete</Button>
                                 <Button variant="primary" className="primary" onClick={editProduct.bind(this, products.productId)}> Edit</Button>
                             </Card.Body>
                         </Card>
                     </Col>
                 )))}
+                
             </Row>
-
+            <Button variant="primary" className="primary" onClick={addProduct}> Add</Button>
         </>
     )
 
