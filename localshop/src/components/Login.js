@@ -34,20 +34,17 @@ const Login = (props) => {
 const loginSubmit=(e)=>{
     e.preventDefault();
     console.log("login",loginState);
-    axios.post('http://localhost:5000/user/login',loginState)
+    axios.post('https://localshop24.herokuapp.com/user/login',loginState)
     .then(res=>{
         console.log("login",res.data.token)
         localStorage.setItem('token',res.data.token);
       //  props.setLoggedIn(res.data.token);
       console.log("cust",res.data.role)
-        if(res.data.role=="Customer"){
+        if(res.data.role==="Admin"){
          //   navigate("/products")
          navigate("/adminPage")
         }
-        else{
-            //currently navigating to admin page
-            navigate("/adminPage")
-        }
+       
     })
     .catch(err=>{
         console.log("Login failed",err)    
