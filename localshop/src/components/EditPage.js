@@ -20,7 +20,7 @@ const EditPage = (props) => {
     const [error] = useState({ ...defaultState })
 
     useEffect(() => {
-        axiosWithAuth().get(`http://localhost:5000/admin/product/${productId}`)
+        axiosWithAuth().get(`https://localshop24.herokuapp.com/admin/product/${productId}`)
             .then(res => {
                 console.log(res.data.data, "axios, edit, get")
                 setFormState(res.data.data)
@@ -50,7 +50,7 @@ const backToProduct=()=>{
 const submitForm = () => {
     //  event.preventDefault();
     console.log("update", formState,"id",productId)
-    axiosWithAuth().put(`http://localhost:5000/admin/product/${productId}`, formState)
+    axiosWithAuth().put(`https://localshop24.herokuapp.com/admin/product/${productId}`, formState)
         .then(res => {
             console.log("Result update", res.data.data)
             navigate('/adminPage');
