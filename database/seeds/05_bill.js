@@ -1,7 +1,7 @@
 exports.seed=async function(knex){
-    await knex('bill').insert([
-        {
+    // await knex('bill').insert([
+    //     {
             
-        }
-    ])
+    //     }
+    // ])
 }

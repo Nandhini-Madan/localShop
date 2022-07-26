@@ -64,10 +64,10 @@ const SignUp = () => {
         console.log("clicked")
         event.preventDefault();
         console.table(formState.roleId)
-        axios.post("http://localhost:5000/user/register",formState)
+        axios.post("https://localshop24.herokuapp.com/user/register",formState)
             .then(res=>{
                 console.log(res.data.data.roleId);
-                if(res.status===201 && res.data.data.roleId==2){
+                if(res.status===201 && res.data.data.roleId===2){
                     console.log("Successfully registered")
                     navigate("/products")
                 }
