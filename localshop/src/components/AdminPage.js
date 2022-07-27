@@ -9,7 +9,7 @@ const AdminPage = () => {
     const [products, setProducts] = useState([])
     const getProducts = () => {
         console.log("getProducts admin page");
-        axiosWithAuth().get("http://localhost:5000/admin/products")
+        axiosWithAuth().get("https://localshop24.herokuapp.com/admin/products")
             .then(res => {
                 console.log(res,"getProduct");
                 setProducts(res.data.data)
@@ -22,7 +22,7 @@ const AdminPage = () => {
     const deleteProduct = (id) => {
         const productId = id;
         console.log(productId,"del1")
-        axiosWithAuth().delete(`http://localhost:5000/admin/product/${productId}` )
+        axiosWithAuth().delete(`https://localshop24.herokuapp.com/admin/product/${productId}` )
             .then(res => {
                 if (res.status ===200) {
                 getProducts();
