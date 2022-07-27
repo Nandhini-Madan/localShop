@@ -6,7 +6,7 @@ const { table } = require("console");
  */
 exports.up = async function (knex) {
     try {
-        await knex.schema.createTable('roles', tbl => {
+        await knex.schema.createTableIfNotExists('roles', tbl => {
             tbl.increments('id');
             tbl.string('roleName').notNullable()
         })
@@ -22,7 +22,7 @@ exports.up = async function (knex) {
     }
     try {
         console.log("user")
-        await knex.schema.createTable('users', tbl => {
+        await knex.schema.createTableIfNotExists('users', tbl => {
             tbl.increments('userId');
             tbl.string('name', 255)
                 .notNullable();
@@ -52,7 +52,7 @@ exports.up = async function (knex) {
         }
     }
     try {
-        await knex.schema.createTable('products', tbl => {
+        await knex.schema.createTableIfNotExists('products', tbl => {
             tbl.increments('productId')
                 .notNullable();
             tbl.string('productName', 255)
@@ -73,7 +73,7 @@ exports.up = async function (knex) {
         }
     }
     try {
-        await knex.schema.createTable('myCart', tbl => {
+        await knex.schema.createTableIfNotExists('myCart', tbl => {
             tbl.increments("cartId");
             tbl.integer('customerId')
                // .notNullable()
@@ -104,7 +104,7 @@ exports.up = async function (knex) {
     }
 
     try {
-        await knex.schema.createTable('bill', tbl => {
+        await knex.schema.createTableIfNotExists('bill', tbl => {
             tbl.increments('billId');
             tbl.integer('saleId')
                // .notNullable()
@@ -136,7 +136,7 @@ exports.up = async function (knex) {
 
     }
     try {
-        await knex.schema.createTable('billAddress',tbl=>{
+        await knex.schema.createTableIfNotExists('billAddress',tbl=>{
             tbl.increments('billAddId');
             tbl.integer('billsId')
           //  .notNullable()
