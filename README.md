@@ -22,6 +22,12 @@ Local Shop is a website where you can find handmade, vintage, and custom gifts f
 | ------------- | ------------- |
 | ab@bc.com      | 12345        |
 
+# Important
+# Install
+npm install
+# Features
+1. Admin can create , Edit, delete products
+2. customers -# pending 
 
 #contributor
 Nandhini Madan
