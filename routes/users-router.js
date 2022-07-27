@@ -33,7 +33,7 @@ router.post("/register",(req,res)=>{
 
 router.post('/login', (req, res) => {
     const { email, password } = req.body;
-    console.log("req.body",req.body)
+    console.log("req.body",req.body,email)
     if (isValid(req.body)) {
      console.log("valid")
       db.getByEmail(email )    
