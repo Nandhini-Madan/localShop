@@ -16,12 +16,21 @@ Local Shop is a website where you can find handmade, vintage, and custom gifts f
 5. Craft enthusiasts.
 6. People who are looking for gifts for special occasions e.g., Fathers Day, Mothers Day, etc.
 
+# Demo
+https://localshop.netlify.app/
+
 # Login
 
 | Email         | password      |
 | ------------- | ------------- |
-| ab@bc.com      | 12345         |
+| ab@bc.com      | 12345        |
 
+# Important
+# Install
+npm install
+# Features
+1. Admin can create , Edit, delete products and view products
+2. customers -# pending 
 
 #contributor
 Nandhini Madan
