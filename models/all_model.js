@@ -45,15 +45,15 @@ async function getByUserId(userId) {
 }
 async function getByProductId(productId) {
     console.log("getByProductId hj", productId)
-   // const id = parseInt(ProductId)
+    const id = parseInt(productId)
     try {
         return db("products")
            // .join('roles', 'users.roleId', 'roles.id')
-            .select("products.productName",
-            "products.productDescription",
-            "products.price")
-            .where({productId})
-            //.first()
+            .select('products.productName',
+            'products.productDescription',
+            'products.price')
+            .where(productId)
+            .first()
         
     }
     catch (err) {

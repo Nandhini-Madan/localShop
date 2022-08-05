@@ -1,24 +1,16 @@
 import React from "react";
 //import { Component } from "react";
-import { Redirect, Route } from "react-router-dom";
+import { Navigate} from "react-router-dom";
 
-const PrivateRoute=({component:Component,...rest})=>{
-    return(
-        <Route {...rest}
-        render={props=>{
-            if(localStorage.getItem("token")){
-                console.log("Loading Private Route",localStorage.getItem("token"));
-                return <Component {...props}/>
-            }
-            else{
-                console.log("redirecting")
-                return <Redirect to ="/login"/>
-            }
-        }}
-        />
-    
-    )
-};
 
+const PrivateRoute = ({ children}) => {
+    const isAuthenticated = localStorage.getItem("token");
+        
+    if (isAuthenticated ) {
+      return children
+    }
+      
+    return <Navigate to="/login" />
+  }
 
 export default PrivateRoute;
