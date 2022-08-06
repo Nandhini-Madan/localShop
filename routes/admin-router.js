@@ -100,7 +100,7 @@ router.delete("/product/:id", (req, res) => {
                     })
             }
             else {
-                res.status(404).json({ message: "Product Id not found", product, id })
+                res.status(404).json({ message: "Product Id not found", id })
             }
         })
         .catch((err) => {
