@@ -47,12 +47,12 @@ async function getByProductId(productId) {
     console.log("getByProductId hj", productId)
     const id = parseInt(productId)
     try {
-        return db("products")
+        return db('products')
            // .join('roles', 'users.roleId', 'roles.id')
             .select('products.productName',
             'products.productDescription',
             'products.price')
-            .where(productId)
+            .where({productId})
             .first()
         
     }
