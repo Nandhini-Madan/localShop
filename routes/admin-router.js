@@ -92,7 +92,7 @@ router.delete("/product/:id", (req, res) => {
                 db.removeProductById(id)
                     .then((count) => {
                         if (count > 0) {
-                            res.status(200).json({ message: "successfully deleted" })
+                            res.status(204).json({ message: "successfully deleted" })
                         }
                     })
                     .catch((err) => {
