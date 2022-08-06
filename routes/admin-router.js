@@ -85,7 +85,7 @@ router.delete("/product/:id", (req, res) => {
     // let userId = req.jwt.userId;
     let productId = parseInt(id)
     console.log(productId, "deletconverted")
-    db.getByProductId(id)
+    db.getByProductId(productId)
         .then((D) => {
             console.log("productID then ", D)
             if (D) {

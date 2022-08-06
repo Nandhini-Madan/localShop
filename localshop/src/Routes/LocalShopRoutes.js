@@ -17,7 +17,7 @@ const LocalShopRoutes = () => {
                 <Route path="/products" element={<Products/>}/>
                 <Route path="/adminPage" element={<PrivateRoute><AdminPage/></PrivateRoute> }/>
                 <Route path="/AddProduct" element={<PrivateRoute><AddProduct/></PrivateRoute>}/>
-                <Route path="/editPage" element={<EditPage/>}/>
+                <Route path="/editPage" element={<PrivateRoute><EditPage/></PrivateRoute>}/>
                 <Route path="/footer" element={<Footer/>}/>
                 <Route  path="/" element={<Homepage/>}/>
             </Routes>
