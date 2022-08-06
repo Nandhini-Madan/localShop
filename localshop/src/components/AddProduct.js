@@ -63,7 +63,7 @@ const AddProduct = () => {
         axiosWithAuth().post("https://localshop24.herokuapp.com/admin/product", formState)
             .then(res => {
                 console.log("201")
-                if (res.status ==="201") {
+                if (res.status ===201) {
                     console.log("success created")
                     navigate("/AdminPage");
                 }
