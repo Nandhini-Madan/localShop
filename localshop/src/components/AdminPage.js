@@ -24,7 +24,7 @@ const AdminPage = () => {
         console.log(productId,"del1")
         axiosWithAuth().delete(`https://localshop24.herokuapp.com/admin/product/${productId}` )
             .then(res => {
-                if (res.status ===200) {
+                if (res.status ===204) {
                 getProducts();
                 }
                 else{
