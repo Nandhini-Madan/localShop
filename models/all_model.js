@@ -52,7 +52,7 @@ async function getByProductId(productId) {
             .select('products.productName',
             'products.productDescription',
             'products.price')
-            .where(productId)
+            .where({productId})
             .first()
         
     }
