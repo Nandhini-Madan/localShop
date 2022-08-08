@@ -50,10 +50,10 @@ router.put("/product/:productId", (req, res) => {
             res.status(500).json({ message: "Server Error" })
         });
 })
-//get product details
+//roduct details
 router.get("/product/:productId", (req, res) => {
-    let { id } = req.params;
-    console.log("Get ID12", id);
+     let { id } = req.params.productId;
+    console.log("get12", id);
     // let userId = req.jwt.userId;
     let productId = parseInt(id)
     db.getByProductId(productId)
