@@ -15,6 +15,7 @@ async function addProduct(productDetails) {
     console.log(productDetails, "user db")
     try {
         const [productId] = await db("products").insert(productDetails, "productId")
+        console.log(productId,"products Added")
         return getByProductId(productId);
     }
     catch (err) {
@@ -44,7 +45,7 @@ async function getByUserId(userId) {
     }
 }
 async function getByProductId(productId) {
-    console.log("getByProductId hj", productId)
+    console.log("getByProductId hj", {productId})
     const id = parseInt(productId)
     try {
         return db('products')
