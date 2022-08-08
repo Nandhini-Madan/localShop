@@ -15,9 +15,9 @@ async function addProduct(productDetails) {
     console.log(productDetails, "user db")
     try {
         const [productId] = await db("products").insert(productDetails, "productId")
-        console.log({productId},"products Added")
-        const {id}=productId
-        return getByProductId(id);
+        console.log(productId,"products Added");
+        
+        return getByProductId(productId);
     }
     catch (err) {
         console.log("add product", err)
@@ -47,14 +47,14 @@ async function getByUserId(userId) {
 }
 async function getByProductId(productId) {
     console.log("getByProductId hj", {productId})
-    const id = parseInt(productId)
+   // const id = parseInt(productId)
     try {
         return db('products')
            // .join('roles', 'users.roleId', 'roles.id')
             .select('products.productName',
             'products.productDescription',
             'products.price')
-            .where({productId})
+            .where('productId',productId)
             .first()
         
     }
