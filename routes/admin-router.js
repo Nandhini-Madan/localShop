@@ -52,9 +52,10 @@ router.put("/product/:productId", (req, res) => {
 })
 //get product details
 router.get("/product/:productId", (req, res) => {
-    let { productId } = req.params;
+    let { id } = req.params;
+    console.log("Get ID12", id);
     // let userId = req.jwt.userId;
-    console.log("get pID", productId);
+    let productId = parseInt(id)
     db.getByProductId(productId)
         .then((productDe) => {
             console.log("Product Details", productDe[0]);
