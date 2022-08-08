@@ -52,11 +52,12 @@ router.put("/product/:productId", (req, res) => {
 })
 //roduct details
 router.get("/product/:productId", (req, res) => {
-     let { id } = req.params.productId;
-    console.log("get12", id);
+     let { productId } = req.params;
+   // console.log("get12", id);
     // let userId = req.jwt.userId;
-    let productId = parseInt(id)
-    db.getByProductId(productId)
+  //  let productId = parseInt(id)
+  let id=parseInt(productId)
+    db.getByProductId(id)
         .then((productDe) => {
             console.log("Product Details", productDe[0]);
             res.status(200).json({ data: productDe[0], message: "product detail" })
