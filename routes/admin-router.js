@@ -60,7 +60,7 @@ router.get("/product/:productId", (req, res) => {
     db.getByProductId(id)
         .then((productDe) => {
             console.log("Product Details", productDe);
-            res.status(200).json({ data: productDe[0], message: "product detail" })
+            res.status(200).json({ data: productDe, message: "product detail" })
         })
         .catch((err) => {
             res.status(500).json({ message: "Error will retireving product details", err })
