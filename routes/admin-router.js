@@ -59,7 +59,7 @@ router.get("/product/:productId", (req, res) => {
   let id=parseInt(productId)
     db.getByProductId(id)
         .then((productDe) => {
-            console.log("Product Details", productDe[0]);
+            console.log("Product Details", productDe);
             res.status(200).json({ data: productDe[0], message: "product detail" })
         })
         .catch((err) => {
