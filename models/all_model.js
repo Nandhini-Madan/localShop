@@ -14,9 +14,11 @@ async function add(user) {
 async function addProduct(productDetails) {
     console.log(productDetails, "user db")
     try {
-        const [productId] = await db("products").insert(productDetails, "productId")
-        console.log(productId,"products Added");
-        
+        const [result] = await db("products").insert(productDetails, "productId")
+        if (!result.productId) {
+          throw new Error('Product ID does not exist in addProduct');
+        }
+        const { productId } = result;
         return getByProductId(productId);
     }
     catch (err) {
