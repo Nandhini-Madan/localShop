@@ -15,8 +15,9 @@ async function addProduct(productDetails) {
     console.log(productDetails, "user db")
     try {
         const [productId] = await db("products").insert(productDetails, "productId")
-        console.log(productId,"products Added")
-        return getByProductId(productId);
+        console.log({productId},"products Added")
+        const {id}=productId
+        return getByProductId(id);
     }
     catch (err) {
         console.log("add product", err)
