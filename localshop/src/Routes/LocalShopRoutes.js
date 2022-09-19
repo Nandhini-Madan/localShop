@@ -14,7 +14,7 @@ const LocalShopRoutes = () => {
             <Routes>
                 <Route path="/login" element={<Login />}/>
                 <Route path="/signup" element={<SignUp />}/>
-                <Route path="/products" element={<Products/>}/>
+                <Route path="/products" element={<PrivateRoute><Products/></PrivateRoute>}/>
                 <Route path="/adminPage" element={<PrivateRoute><AdminPage/></PrivateRoute> }/>
                 <Route path="/AddProduct" element={<PrivateRoute><AddProduct/></PrivateRoute>}/>
                 <Route path="/editPage" element={<PrivateRoute><EditPage/></PrivateRoute>}/>
