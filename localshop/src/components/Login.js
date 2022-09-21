@@ -44,6 +44,10 @@ const loginSubmit=(e)=>{
          //   navigate("/products")
          navigate("/adminPage")
         }
+        else{
+            console.log("products")
+            navigate("/products")
+        }
        
     })
     .catch(err=>{
