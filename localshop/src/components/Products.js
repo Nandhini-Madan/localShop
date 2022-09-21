@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
-import { Row, Col, Card, Button } from "react-bootstrap";
+import { Row, Col, Card, Button, CardImg } from "react-bootstrap";
 import fitness from "../Assests/coming soon.jpg";
 
 const Products = () => {
@@ -46,9 +46,10 @@ const Products = () => {
                                 <Card.Title>Name:{products.productName}</Card.Title>
                                 <Card.Text>Description:{products.productDescription}</Card.Text>
                                 <Card.Text>price:{products.price}</Card.Text>
+                               
                                 <div className="d-grid gap-2 d-md-block">
-                                    <Button type="button" className=" btn g-col-4" variant="primary" onClick={deleteProduct.bind(this, products.productId)}> +</Button>
-                                    <Button type="button" className="btn g-col-4" variant="primary" onClick={editProduct.bind(this, products.productId)}> Edit</Button>
+                                    <Button type="button" className=" btn g-col-4" variant="primary" onClick={increase.bind(this, products.productId)}> +</Button>
+                                    <Button type="button" className="btn g-col-4" variant="primary" onClick={decrease.bind(this, products.productId)}> -</Button>
                                 </div>
 
                             </Card.Body>
