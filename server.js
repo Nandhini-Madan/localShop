@@ -6,6 +6,7 @@ const cors = require("cors");
 
 const usersRouter = require("./routes/users-router");
 const adminRouter=require("./routes/admin-router");
+const customer=require("./routes/customer-router")
 const restricted=require("./auth/middleware");
 const helmet = require("helmet");
 
@@ -17,7 +18,7 @@ server.use(express.json());
 // Routers
 server.use("/user", usersRouter);
 server.use("/admin",restricted,adminRouter );
-//server.use("/admin",adminRouter );
+server.use("/customer",restricted,customer );
 
 //Routes
 server.get("/", (req, res) => {
